@@ -83,6 +83,15 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+  if ENV['RAILS_LOG_LEVEL'].present?
+    if ENV['RAILS_LOG_LEVEL'] == 'warn'
+      config.log_level = :warn
+    elsif ENV['RAILS_LOG_LEVEL'] == 'error'
+      config.log_level = :error
+    end
+  end
+
+
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
 
